@@ -89,7 +89,7 @@
       };
 
       // 送信データを変換
-      const obj = jsondata //json形式
+      const obj = jsondata;
       const body = Object.keys(obj).map((key)=>key+"="+encodeURIComponent(obj[key])).join("&");
 
       const options = { 
