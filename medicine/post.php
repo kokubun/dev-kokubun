@@ -57,14 +57,15 @@
         'Content-Type': 'application/x-www-form-urlencoded'
       };
       // 送信データを変換
-      const obj = jsondata //json形式
-      const body = Object.keys(obj).map((key)=>key+"="+encodeURIComponent(obj[key])).join("&");
+      // const obj = jsondata //json形式
+      // const body = Object.keys(obj).map((key)=>key+"="+encodeURIComponent(obj[key])).join("&");
 
       const options = { 
         method, 
         headers,
-        mode: 'cors',
-        body
+        // mode: 'cors',
+        mode: 'cors'
+        // body
       }
       fetch(url, options)
         .then(res => {
@@ -77,6 +78,5 @@
         });
       });
 
-    });
   </script>
 </html>
