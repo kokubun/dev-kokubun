@@ -70,6 +70,8 @@ class Line {
 		curl_setopt_array($curl, $options);
 		$response = curl_exec($curl);
 		$code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+		print_r($response);
+		print_r($code);
 		curl_close($curl);
 
 		return true;
