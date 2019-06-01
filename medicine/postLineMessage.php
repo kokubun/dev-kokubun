@@ -26,8 +26,8 @@ class Line {
 	// 複数アカウントにメッセージ送信API
 	const MULTICAST_URL = 'https://api.line.me/v2/bot/message/multicast';
 	
-	public $access = '';
-	public $to = '';
+	protected $access;
+	protected $to;
 	
 	public function __construct($t, $u) {
 		self::$access = $t;
