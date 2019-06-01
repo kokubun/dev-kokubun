@@ -49,8 +49,9 @@ class Line {
 			'Content-Type: application/json',
 			'Authorization: Bearer '.$this->access,
 		);
-		//$messages = array('type' => 'text', 'text' => mb_convert_encoding($message, 'UTF-8'));
-		print_r($message);
+		// $messages = array('type' => 'text', 'text' => mb_convert_encoding($message, 'UTF-8'));
+		$messages = array('type' => 'text', 'text' => $message);
+		print_r($messages);
 		// $body = json_encode(
 		// 	array(
 		// 		'to'		=> $this->to,
