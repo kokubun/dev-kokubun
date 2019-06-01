@@ -18,13 +18,13 @@
     <div class="container" style="padding-top: 50px;">
       <h2>お薬手帳アプリ</h2>
       <div class="jumbotron">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mymodal">
           お薬記録登録
         </button>
       </div>
     </div>
     <!-- モーダルの設定 -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="mymodallabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -35,6 +35,7 @@
           </div>
           <div class="modal-body">
             <p>お薬を飲みましたか？</p>
+            <div class="alert alert-danger" id="model_error" role="alert" style="display:none;">エラーが発生しました</div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-primary" id="y_modal">飲みました。</button>
@@ -62,6 +63,11 @@
     y_modal.addEventListener('click', function(){
       _post();
     });
+
+    $('#mymodal').on('hidden.bs.modal', function () {
+      $('#model_error').hide();
+    })
+
 
     /**
      * POST 
@@ -105,11 +111,16 @@
       fetch(url, options)
         .then(res => {
           //成功時の処理
-          console.log(res);
+          if (res.status == 200 && res.statusText == 'OK') {
+            $('#mymodal').modal('hide');
+          } else {
+            $('#model_error').show();
+          }
         })
         .catch(err => {
           //エラー時の処理
           console.log(res);
+          $('#model_error').show();
         });
 
     }
