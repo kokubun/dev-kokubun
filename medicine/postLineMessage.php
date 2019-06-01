@@ -57,18 +57,18 @@ class Line {
 			)
 		);
 
-		// $options = array(
-		// 	CURLOPT_URL				=> self::MULTICAST_SETTING['url'],
-		// 	CURLOPT_CUSTOMREQUEST	=> 'POST',
-		// 	CURLOPT_RETURNTRANSFER	=> true,
-		// 	CURLOPT_HTTPHEADER		=> $header,
-		// 	CURLOPT_POSTFIELDS		=> $body
-		// );
-		// $curl = curl_init();
-		// curl_setopt_array($curl, $options);
-		// $response = curl_exec($curl);
-		// $code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-		// curl_close($curl);
+		$options = array(
+			CURLOPT_URL				=> self::MULTICAST_SETTING['url'],
+			CURLOPT_CUSTOMREQUEST	=> 'POST',
+			CURLOPT_RETURNTRANSFER	=> true,
+			CURLOPT_HTTPHEADER		=> $header,
+			CURLOPT_POSTFIELDS		=> $body
+		);
+		$curl = curl_init();
+		curl_setopt_array($curl, $options);
+		$response = curl_exec($curl);
+		$code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+		curl_close($curl);
 
 		return true;
 	}
