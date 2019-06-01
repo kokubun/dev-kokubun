@@ -1,7 +1,7 @@
 <?php
 
   $t = filter_input(INPUT_GET, 't');
-  $u = filter_input(INPUT_GET, 'u');
+  $u = filter_input(INPUT_GET, 'u[]');
 
 ?>
 
