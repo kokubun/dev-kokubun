@@ -69,13 +69,13 @@
       fetch(url, options)
         .then(res => {
           //成功時の処理
-          console.log(res)
+          console.log(res);
         })
         .catch(err => {
           //エラー時の処理
-          console.error;
-        })
-      }
+          console.log(res);
+        });
+      });
 
     });
   </script>
