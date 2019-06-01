@@ -43,19 +43,19 @@ class Line {
 	public function multicastMessage($message) {
 		$multicast_setting = [
 			'url'	=> self::MULTICAST_URL,
-		//	'to'	=> [self::$to],
+			'to'	=> [$this->to],
 		];
 		$header = array(
 			'Content-Type: application/json',
-			// 'Authorization: Bearer '.self::$access,
+			'Authorization: Bearer '.$this->access,
 		);
-		// $messages = array('type' => 'text', 'text' => mb_convert_encoding($message, 'UTF-8'));
-		// $body = json_encode(
-		// 	array(
-		// 		'to'		=> self::MULTICAST_SETTING['to'],
-		// 		'messages'	=> [$messages],
-		// 	)
-		// );
+		$messages = array('type' => 'text', 'text' => mb_convert_encoding($message, 'UTF-8'));
+		$body = json_encode(
+			array(
+				'to'		=> $this->to,
+				'messages'	=> [$messages],
+			)
+		);
 
 		// $options = array(
 		// 	CURLOPT_URL				=> self::MULTICAST_SETTING['url'],
