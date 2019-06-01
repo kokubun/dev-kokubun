@@ -49,12 +49,11 @@ class Line {
 			'Content-Type: application/json',
 			'Authorization: Bearer '.$this->access,
 		);
-		$messages = array('type' => 'text', 'text' => mb_convert_encoding($message, 'UTF-8'));
+		$_messages = array('type' => 'text', 'text' => mb_convert_encoding($message, 'UTF-8'));
 		$body = json_encode(
 			array(
 				'to'		=> $this->to,
-				// 'messages'	=> [$messages],
-				'messages'	=> $messages,
+				'messages'	=> [$_messages],
 			)
 		);
 		print_r($body);
