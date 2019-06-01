@@ -45,6 +45,7 @@ class Line {
 			'url'	=> self::MULTICAST_URL,
 			'to'	=> [$this->to],
 		];
+		print_r($multicast_setting);
 		$header = array(
 			'Content-Type: application/json',
 			'Authorization: Bearer '.$this->access,
@@ -58,7 +59,7 @@ class Line {
 		);
 
 		$options = array(
-			CURLOPT_URL				=> self::MULTICAST_SETTING['url'],
+			CURLOPT_URL				=> self::MULTICAST_URL,
 			CURLOPT_CUSTOMREQUEST	=> 'POST',
 			CURLOPT_RETURNTRANSFER	=> true,
 			CURLOPT_HTTPHEADER		=> $header,
