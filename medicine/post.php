@@ -1,6 +1,6 @@
 <?php
 
-  $t = filter_input('t', $_GET);
+  $t = filter_input('t', 'GET');
 
 ?>
 
@@ -49,7 +49,21 @@
   <script>
     const y_modal = document.getElementById('y_modal');
     y_modal.addEventListener('click', function(){
-      alert(1);
+      axios({
+      url: 'https://dev-kokubun.herokuapp.com/medicine/postLineMessage.php?t=qeqweqwq',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      data: json
+    }).then(res => {
+        //成功時の処理
+        console.log(res)
+      })
+      .catch(err => {
+        //エラー時の処理
+        console.error;
+      })
     });
   </script>
 </html>
