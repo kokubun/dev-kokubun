@@ -49,14 +49,15 @@ class Line {
 			'Content-Type: application/json',
 			'Authorization: Bearer '.$this->access,
 		);
-		$_messages = array('type' => 'text', 'text' => mb_convert_encoding($message, 'UTF-8'));
-		$body = json_encode(
-			array(
-				'to'		=> $this->to,
-				'messages'	=> [$_messages],
-			)
-		);
-		print_r($body);
+		$messages = array('type' => 'text', 'text' => mb_convert_encoding($message, 'UTF-8'));
+		print_r($messages);
+		// $body = json_encode(
+		// 	array(
+		// 		'to'		=> $this->to,
+		// 		'messages'	=> [$messages],
+		// 	)
+		// );
+		// print_r($body);
 
 		// $options = array(
 		// 	CURLOPT_URL				=> self::MULTICAST_URL,
