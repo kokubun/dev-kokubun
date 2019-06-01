@@ -68,7 +68,7 @@
     function _post() {
       const method = 'POST';
       //送信先を指定
-      const url = 'https://dev-kokubun.herokuapp.com/medicine/postLineMessage.php?t=qeqweqwq' 
+      const url = 'https://dev-kokubun.herokuapp.com/medicine/postLineMessage.php' 
       const headers = {
         'Content-Type': 'application/x-www-form-urlencoded'
       };
