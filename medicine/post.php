@@ -49,21 +49,34 @@
   <script>
     const y_modal = document.getElementById('y_modal');
     y_modal.addEventListener('click', function(){
-      axios({
-      url: 'https://dev-kokubun.herokuapp.com/medicine/postLineMessage.php?t=qeqweqwq',
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      data: json
-    }).then(res => {
-        //成功時の処理
-        console.log(res)
-      })
-      .catch(err => {
-        //エラー時の処理
-        console.error;
-      })
+
+      const method = 'POST';
+      //送信先を指定
+      const url = 'https://dev-kokubun.herokuapp.com/medicine/postLineMessage.php?t=qeqweqwq' 
+      const headers = {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      };
+      // 送信データを変換
+      const obj = jsondata //json形式
+      const body = Object.keys(obj).map((key)=>key+"="+encodeURIComponent(obj[key])).join("&");
+
+      const options = { 
+        method, 
+        headers,
+        mode: 'cors',
+        body
+      }
+      fetch(url, options)
+        .then(res => {
+          //成功時の処理
+          console.log(res)
+        })
+        .catch(err => {
+          //エラー時の処理
+          console.error;
+        })
+      }
+
     });
   </script>
 </html>
