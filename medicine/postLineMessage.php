@@ -34,7 +34,7 @@ class Line {
 	public function __construct($tp, $ta, $u) {
 		$this->access1 = $tp;
 		$this->access2 = $ta;
-		$this->to = $u;
+		$this->to = [$u];
 	}
 
 	/**
