@@ -45,7 +45,6 @@ class Line {
 			'url'	=> self::MULTICAST_URL,
 			'to'	=> [$this->to],
 		];
-		print_r($multicast_setting);
 		$header = array(
 			'Content-Type: application/json',
 			'Authorization: Bearer '.$this->access,
