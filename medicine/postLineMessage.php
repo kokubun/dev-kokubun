@@ -14,7 +14,7 @@ if (!isset($t) || !isset($u)) {
 	exit();
 }
 
-$line = new Line();
+$line = new Line($t, $u);
 $line->multicastMessage('薬飲みました。');
 
 class Line {
