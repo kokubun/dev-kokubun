@@ -15,7 +15,7 @@ if (!isset($t) || !isset($u)) {
 }
 
 $line = new Line($t, $u);
-$line->multicastMessage('薬飲みました。');
+$line->multicastMessage('[DEBUG]薬飲みました。');
 
 $response_body = createResponseBody(SUCCESS_STATUS, 'OK');
 response($response_body);
@@ -49,7 +49,6 @@ class Line {
 			'Content-Type: application/json',
 			'Authorization: Bearer '.$this->access,
 		);
-		// $messages = array('type' => 'text', 'text' => mb_convert_encoding($message, 'UTF-8'));
 		$messages = array('type' => 'text', 'text' => $message);
 		$body = json_encode(
 			array(
