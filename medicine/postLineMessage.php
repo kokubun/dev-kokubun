@@ -16,7 +16,7 @@ if (!isset($tp) || !isset($ta) || !isset($u)) {
 }
 
 $line = new Line($tp, $ta, $u);
-$line->multicastMessage('[DEBUG]薬飲みました。');
+$line->multicastMessage('薬飲みました。');
 
 $response_body = createResponseBody(SUCCESS_STATUS, 'OK');
 response($response_body);
