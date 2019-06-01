@@ -26,12 +26,8 @@ class Line {
 	// 複数アカウントにメッセージ送信API
 	const MULTICAST_URL = 'https://api.line.me/v2/bot/message/multicast';
 	
-	const MULTICAST_SETTING = [
-		'url'	=> MULTICAST_URL,
-		'to'	=> [],
-	];
-
 	public $access = '';
+	public $to = '';
 	
 	public function __construct($t, $u) {
 		self::$access = $t;
@@ -45,10 +41,14 @@ class Line {
 	 * @return void
 	 */
 	public function multicastMessage($message) {
-		// $header = array(
-		// 	'Content-Type: application/json',
-		// 	'Authorization: Bearer '.self::$access,
-		// );
+		$multicast_setting = [
+			'url'	=> self::MULTICAST_URL,
+			'to'	=> [self::$to],
+		];
+		$header = array(
+			'Content-Type: application/json',
+			'Authorization: Bearer '.self::$access,
+		);
 		// $messages = array('type' => 'text', 'text' => mb_convert_encoding($message, 'UTF-8'));
 		// $body = json_encode(
 		// 	array(
