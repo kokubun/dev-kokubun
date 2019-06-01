@@ -57,6 +57,7 @@ class Line {
 				'messages'	=> [$messages],
 			)
 		);
+		print_r($body);
 
 		// $options = array(
 		// 	CURLOPT_URL				=> self::MULTICAST_URL,
