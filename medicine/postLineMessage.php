@@ -65,6 +65,7 @@ class Line {
 			CURLOPT_HTTPHEADER		=> $header,
 			CURLOPT_POSTFIELDS		=> $body
 		);
+		print_r($options);
 		$curl = curl_init();
 		curl_setopt_array($curl, $options);
 		$response = curl_exec($curl);
