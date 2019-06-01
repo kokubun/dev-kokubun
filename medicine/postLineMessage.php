@@ -17,6 +17,10 @@ if (!isset($t) || !isset($u)) {
 $line = new Line($t, $u);
 $line->multicastMessage('薬飲みました。');
 
+$response_body = createResponseBody(SUCCESS_STATUS, 'OK');
+response($response_body);
+exit();
+
 class Line {
 
 	// 複数アカウントにメッセージ送信API
