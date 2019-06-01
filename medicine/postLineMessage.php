@@ -53,7 +53,8 @@ class Line {
 		$body = json_encode(
 			array(
 				'to'		=> $this->to,
-				'messages'	=> [$messages],
+				// 'messages'	=> [$messages],
+				'messages'	=> $messages,
 			)
 		);
 		print_r($body);
