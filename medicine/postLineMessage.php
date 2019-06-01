@@ -30,8 +30,8 @@ class Line {
 	protected $to;
 	
 	public function __construct($t, $u) {
-		self::$access = $t;
-		self::$to = $u;
+		// self::$access = $t;
+		// self::$to = $u;
 	}
 
 	/**
