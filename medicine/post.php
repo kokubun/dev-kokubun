@@ -73,6 +73,14 @@
         'Content-Type': 'application/x-www-form-urlencoded'
       };
       const t = document.getElementById('t').value;
+      const u = document.querySelectorAll('input.u');
+      let u_json = '';
+
+      if (u.length > 0) {
+        for (let i in u) {
+          console.log(u[i]);
+        }
+      }
 
       const jsondata = {
         't': t
