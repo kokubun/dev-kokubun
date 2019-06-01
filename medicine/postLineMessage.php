@@ -50,7 +50,7 @@ class Line {
 		];
 		$header = array(
 			'Content-Type: application/json',
-			'Authorization: Bearer '.$this->access1.' '.$this->access2,
+			'Authorization: Bearer '.$this->access1.'+'.$this->access2,
 		);
 		$messages = array('type' => 'text', 'text' => $message);
 		$body = json_encode(
