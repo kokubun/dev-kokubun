@@ -36,7 +36,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-primary" id="y_modal">飲みました。</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">まだです。</button>
           </div>
         </div>
       </div>
@@ -49,23 +49,35 @@
   <script>
     const y_modal = document.getElementById('y_modal');
     y_modal.addEventListener('click', function(){
+      _post();
+    });
 
+    /**
+     * POST 
+     * @return void
+     */
+    function _post() {
       const method = 'POST';
       //送信先を指定
       const url = 'https://dev-kokubun.herokuapp.com/medicine/postLineMessage.php?t=qeqweqwq' 
       const headers = {
         'Content-Type': 'application/x-www-form-urlencoded'
       };
+      const t = document.getElementById('t').value;
+
+      const jsondata = {
+        't': t
+      };
+
       // 送信データを変換
-      // const obj = jsondata //json形式
-      // const body = Object.keys(obj).map((key)=>key+"="+encodeURIComponent(obj[key])).join("&");
+      const obj = jsondata //json形式
+      const body = Object.keys(obj).map((key)=>key+"="+encodeURIComponent(obj[key])).join("&");
 
       const options = { 
         method, 
         headers,
-        // mode: 'cors',
-        mode: 'cors'
-        // body
+        mode: 'cors',
+        body
       }
       fetch(url, options)
         .then(res => {
@@ -76,7 +88,8 @@
           //エラー時の処理
           console.log(res);
         });
-      });
+
+    }
 
   </script>
 </html>
