@@ -77,7 +77,7 @@
       let u_json = '';
 
       if (u.length > 0) {
-        for (let i in u) {
+        for (let i = 0; i < u.length; i++) {
           console.log(u[i]);
         }
       }
