@@ -1,6 +1,7 @@
 <?php
 
-  $t = filter_input(INPUT_GET, 't');
+  $tp = filter_input(INPUT_GET, 'tp');
+  $ta = filter_input(INPUT_GET, 'ta');
   $u = filter_input(INPUT_GET, 'u', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
 
 ?>
@@ -42,7 +43,8 @@
         </div>
       </div>
     </div>
-    <input type="hidden" name="t" id="t" value="<?php echo htmlspecialchars($t); ?>">
+    <input type="hidden" name="tp" id="tp" value="<?php echo htmlspecialchars($tp); ?>">
+    <input type="hidden" name="ta" id="ta" value="<?php echo htmlspecialchars($ta); ?>">
     <?php
       if ($u) {
         foreach ($u as $key => $value) {
@@ -72,7 +74,8 @@
       const headers = {
         'Content-Type': 'application/x-www-form-urlencoded'
       };
-      const t = document.getElementById('t').value;
+      const tp = document.getElementById('tp').value;
+      const ta = document.getElementById('ta').value;
       const u = document.querySelectorAll('input.u');
       let _u = '';
 
@@ -84,7 +87,8 @@
       }
 
       const jsondata = {
-        't': t,
+        'tp': tp,
+        'ta': ta,
         'u': _u
       };
 

@@ -5,16 +5,17 @@
 const ERROR_STATUS = 900;
 const SUCCESS_STATUS = 200;
 
-$t = filter_input(INPUT_POST, 't');
+$tp = filter_input(INPUT_POST, 'tp');
+$ta = filter_input(INPUT_POST, 'ta');
 $u = filter_input(INPUT_POST, 'u');
 
-if (!isset($t) || !isset($u)) {
+if (!isset($tp) || !isset($ta) || !isset($u)) {
 	$response_body = createResponseBody(ERROR_STATUS, 'パラメータ不足です');
 	response($response_body);
 	exit();
 }
 
-$line = new Line($t, $u);
+$line = new Line($tp, $ta, $u);
 $line->multicastMessage('[DEBUG]薬飲みました。');
 
 $response_body = createResponseBody(SUCCESS_STATUS, 'OK');
@@ -26,11 +27,13 @@ class Line {
 	// 複数アカウントにメッセージ送信API
 	const MULTICAST_URL = 'https://api.line.me/v2/bot/message/multicast';
 	
-	protected $access;
+	protected $access1;
+	protected $access2;
 	protected $to;
 	
-	public function __construct($t, $u) {
-		$this->access = $t;
+	public function __construct($tp, $ta, $u) {
+		$this->access1 = $tp;
+		$this->access2 = $ta;
 		$this->to = $u;
 	}
 
@@ -47,7 +50,7 @@ class Line {
 		];
 		$header = array(
 			'Content-Type: application/json',
-			'Authorization: Bearer '.$this->access,
+			'Authorization: Bearer '.$this->access1.' '.$this->access2,
 		);
 		$messages = array('type' => 'text', 'text' => $message);
 		$body = json_encode(
