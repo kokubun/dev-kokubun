@@ -1,6 +1,6 @@
 <?php
 
-print_r($_POST);
+// print_r($_POST);
 
 const ERROR_STATUS = 900;
 const SUCCESS_STATUS = 200;
@@ -14,8 +14,8 @@ if (!isset($t) || !isset($u)) {
 	exit();
 }
 
-$line = new Line($t, $u);
-$line->multicastMessage('薬飲みました。');
+// $line = new Line($t, $u);
+// $line->multicastMessage('薬飲みました。');
 
 $response_body = createResponseBody(SUCCESS_STATUS, 'OK');
 response($response_body);
