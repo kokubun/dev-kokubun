@@ -15,7 +15,7 @@ if (!isset($t) || !isset($u)) {
 }
 
 $line = new Line($t, $u);
-// $line->multicastMessage('薬飲みました。');
+$line->multicastMessage('薬飲みました。');
 
 $response_body = createResponseBody(SUCCESS_STATUS, 'OK');
 response($response_body);
