@@ -78,7 +78,7 @@
 
       if (u.length > 0) {
         for (let i = 0; i < u.length; i++) {
-          _u .= u[i].value+':'+;
+          _u += u[i].value+':'+;
         }
         _u = _u.slice(0, -1);
       }
