@@ -74,16 +74,18 @@
       };
       const t = document.getElementById('t').value;
       const u = document.querySelectorAll('input.u');
-      let u_json = '';
+      let _u = '';
 
       if (u.length > 0) {
         for (let i = 0; i < u.length; i++) {
-          console.log(u[i]);
+          _u .= u[i].value+':'+;
         }
+        _u = _u.slice(0, -1);
       }
 
       const jsondata = {
-        't': t
+        't': t,
+        'u': _u
       };
 
       // 送信データを変換
