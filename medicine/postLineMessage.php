@@ -43,11 +43,11 @@ class Line {
 	public function multicastMessage($message) {
 		$multicast_setting = [
 			'url'	=> self::MULTICAST_URL,
-			'to'	=> [self::$to],
+		//	'to'	=> [self::$to],
 		];
 		$header = array(
 			'Content-Type: application/json',
-			'Authorization: Bearer '.self::$access,
+			// 'Authorization: Bearer '.self::$access,
 		);
 		// $messages = array('type' => 'text', 'text' => mb_convert_encoding($message, 'UTF-8'));
 		// $body = json_encode(
