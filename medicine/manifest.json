@@ -21,6 +21,6 @@
 			"type": "image/png"
 		}
 	],
-	"start_url": "/post.php",
+	"start_url": "./post.php",
 	"display": "standalone"
 }
