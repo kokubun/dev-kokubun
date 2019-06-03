@@ -1,5 +1,5 @@
 if ('serviceWorker' in navigator) {
-	navigator.serviceWorker.register('serviceWorker.js')
+	navigator.serviceWorker.register('./serviceWorker.js')
 	.then(
 		function (registration) {
 			if (typeof registration.update == 'function') {
