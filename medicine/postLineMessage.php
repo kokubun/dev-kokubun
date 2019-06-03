@@ -15,7 +15,9 @@ if (!isset($tp) || !isset($ta) || !isset($u)) {
 	exit();
 }
 
-$line = new Line($tp, $ta, $u);
+$u_list = explode(',', $u);
+
+$line = new Line($tp, $ta, $u_list);
 $line->multicastMessage('薬飲みました。');
 
 $response_body = createResponseBody(SUCCESS_STATUS, 'OK');
@@ -34,7 +36,7 @@ class Line {
 	public function __construct($tp, $ta, $u) {
 		$this->access1 = $tp;
 		$this->access2 = $ta;
-		$this->to = [$u];
+		$this->to = $u;
 	}
 
 	/**
@@ -46,7 +48,7 @@ class Line {
 	public function multicastMessage($message) {
 		$multicast_setting = [
 			'url'	=> self::MULTICAST_URL,
-			'to'	=> $this->to,
+			'to'	=> [$this->to],
 		];
 		$header = array(
 			'Content-Type: application/json',
