@@ -1,6 +1,6 @@
 {
-	"name": "medicine",
-	"short_name": "medicine",
+	"name": "お薬手帳",
+	"short_name": "お薬手帳",
 	"theme_color": "#2196f3",
 	"background_color": "#2196f3",
 	"scope": "/",
