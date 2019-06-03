@@ -1,7 +1,12 @@
-<script>
 if ('serviceWorker' in navigator) {
-	navigator.serviceWorker.register('./serviceworker.js').then(function(){
-		console.log("Service Worker Registered");
+	navigator.serviceWorker.register('serviceWorker.js')
+	.then(
+		function (registration) {
+			if (typeof registration.update == 'function') {
+				registration.update();
+			}
+		}
+	).catch(function (error) {
+		console.log("Error Log: " + error);
 	});
 }
-</script>
