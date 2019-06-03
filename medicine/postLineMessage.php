@@ -46,7 +46,7 @@ class Line {
 	public function multicastMessage($message) {
 		$multicast_setting = [
 			'url'	=> self::MULTICAST_URL,
-			'to'	=> [$this->to],
+			'to'	=> $this->to,
 		];
 		$header = array(
 			'Content-Type: application/json',
