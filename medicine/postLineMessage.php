@@ -16,7 +16,7 @@ if (!isset($tp) || !isset($ta) || !isset($u)) {
 }
 
 $u_list = explode(',', $u);
-
+print_r($u_list);
 $line = new Line($tp, $ta, $u_list);
 $line->multicastMessage('薬飲みました。');
 
