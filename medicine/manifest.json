@@ -6,11 +6,23 @@
 	"display": "standalone",
 	"scope": "/",
 	"start_url": "/dev-kokubun.herokuapp.com/medicine/",
-	"icons": [{
-		"src": "android-touch-icon.png",
-		"sizes": "192x192",
-		"type": "image/png"
-	}],
+	"icons": [
+		{
+			"src": "android-touch-icon.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "android-touch-icon-72x72",
+			"sizes": "72x72",
+			"type": "image/png"
+		},
+		{
+			"src": "android-touch-icon-96x96",
+			"sizes": "96x96",
+			"type": "image/png"
+		}
+	],
 	"start_url": "./post.php",
 	"display": "standalone"
 }
