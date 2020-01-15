@@ -17,7 +17,8 @@ try {
 	//SQL実行
 	foreach ($dbh->query($sql) as $row) {
 		// 指定Columnを一覧表示
-		print($row['ColumnName'].'<br>');
+		print_r($row);
+		// print($row['ColumnName'].'<br>');
 	}
   
 } catch(PDOException $e) {
