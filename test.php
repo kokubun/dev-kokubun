@@ -21,8 +21,9 @@ try {
 		// print($row['ColumnName'].'<br>');
 	}
 
-	$sql = "insert into medicine values (2, current_timestamp)";
-	$dbh->query($sql);
+	$dbh->beginTransaction();
+	$sql = "insert into medicine values (current_timestamp)";
+	$dbh->exec($sql);
 	$dbh->commit();
   
 } catch(PDOException $e) {
