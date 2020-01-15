@@ -1,14 +1,14 @@
 <?php
 
-$DBHOST = "ec2-174-129-32-215.compute-1.amazonaws.com";
-$DBPORT = "5432";
-$DBNAME = "dddpsv8go542b8";
-$DBUSER = "tcjetarfhrhdcg";
-$DBPASS = "61ed9e2ce7d69bef04462de6d3d375b6572c5172a6ad0b73f12cd5364aa9ea68";
+$host = filter_input(INPUT_GET, 'h');
+$port = filter_input(INPUT_GET, 'p');
+$name = filter_input(INPUT_GET, 'n');
+$user = filter_input(INPUT_GET, 'u');
+$pass = filter_input(INPUT_GET, 'p');
 
 try {
 	//DB接続
-	$dbh = new PDO("pgsql:host=$DBHOST;port=$DBPORT;dbname=$DBNAME;user=$DBUSER;password=$DBPASS");
+	$dbh = new PDO("pgsql:host=$host;port=$port;dbname=$name;user=$user;password=$pass");
 	print("接続成功".'<br>');
   
 	//SQL作成

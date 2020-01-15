@@ -18,10 +18,13 @@ if (!isset($tp) || !isset($ta) || !isset($u)) {
 $u_list = explode(',', $u);
 print_r($u_list);
 $line = new Line($tp, $ta, $u_list);
-$line->multicastMessage('薬飲みました。');
+$line->multicastMessage('[test]薬飲みました。');
 
 $response_body = createResponseBody(SUCCESS_STATUS, 'OK');
 response($response_body);
+
+// TODO: DB にインサート
+
 exit();
 
 class Line {
