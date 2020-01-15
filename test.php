@@ -20,6 +20,10 @@ try {
 		print_r($row);
 		// print($row['ColumnName'].'<br>');
 	}
+
+	$sql = "insert into medicine values (2, current_timestamp)";
+	$dbh->query($sql);
+	$dbh->commit();
   
 } catch(PDOException $e) {
 	print("接続失敗".'<br>');
