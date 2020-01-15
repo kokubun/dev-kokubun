@@ -10,6 +10,7 @@ try {
 	//DB接続
 	$dbh = new PDO("pgsql:host=$host;port=$port;dbname=$name;user=$user;password=$pass");
 	print("接続成功".'<br>');
+	print("pgsql:host=$host;port=$port;dbname=$name;user=$user;password=$pass");
   
 	//SQL作成
 	// $sql = 'select * from x';
