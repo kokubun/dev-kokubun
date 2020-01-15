@@ -11,16 +11,14 @@ try {
 	$dbh = new PDO("pgsql:host=$host;port=$port;dbname=$name;user=$user;password=$pass");
 	print("接続成功".'<br>');
   
-	//SQL作成
-	// $sql = 'select * from x';
-	// //SQL例
-	// //$sql = 'select * from "SchemeName"."TableName"';
+	// SQL作成
+	$sql = 'select * from medicine';
   
-	// //SQL実行
-	// foreach ($dbh->query($sql) as $row) {
-	// 	//指定Columnを一覧表示
-	// 	print($row['ColumnName'].'<br>');
-	// }
+	//SQL実行
+	foreach ($dbh->query($sql) as $row) {
+		// 指定Columnを一覧表示
+		print($row['ColumnName'].'<br>');
+	}
   
 } catch(PDOException $e) {
 	print("接続失敗".'<br>');
