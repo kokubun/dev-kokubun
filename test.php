@@ -11,7 +11,6 @@ try {
 
 	//DB接続
 	// $dbh = new PDO("pgsql:host=$host;port=$port;dbname=$name;user=$user;password=$pass");
-	$dbh = new PDO("pgsql:host=ec2-174-129-32-215.compute-1.amazonaws.com;port=61ed9e2ce7d69bef04462de6d3d375b6572c5172a6ad0b73f12cd5364aa9ea68;dbname=dddpsv8go542b8;user=tcjetarfhrhdcg;password=61ed9e2ce7d69bef04462de6d3d375b6572c5172a6ad0b73f12cd5364aa9ea68");
 	print("接続成功".'<br>');
   
 	//SQL作成
