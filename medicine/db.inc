@@ -4,12 +4,12 @@
  * DB関連
  */
 class db {
-	static $db_URL = '';
-	static $db_name = '';
-	// static $db_host;
-	// static $db_port;
-	// static $db_user;
-	// static $db_pass;
+	public $db_URL = '';
+	public $db_name = '';
+	// public $db_host;
+	// public $db_port;
+	// public $db_user;
+	// public $db_pass;
 
 	public function __construct($db_name) {
 		$this->db_url = parse_url(getenv('DATABASE_URL'));
