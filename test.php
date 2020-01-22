@@ -1,6 +1,6 @@
 <?php
 
-include_once './db.inc'
+include_once './medicine/db.inc'
 
 // $dbUrl = parse_url(getenv('DATABASE_URL'));
 
