@@ -1,8 +1,10 @@
 <?php
 
-$dbUrl = parse_url(getenv('DATABASE_URL'));
+include_once './db.inc'
 
-print_r($dbUrl);
+// $dbUrl = parse_url(getenv('DATABASE_URL'));
+
+// print_r($dbUrl);
 
 // $host = filter_input(INPUT_GET, 'hs');
 // $port = filter_input(INPUT_GET, 'pr');

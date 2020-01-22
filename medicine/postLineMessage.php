@@ -2,6 +2,8 @@
 
 // print_r($_POST);
 
+include_once './db.inc';
+
 const ERROR_STATUS = 900;
 const SUCCESS_STATUS = 200;
 
