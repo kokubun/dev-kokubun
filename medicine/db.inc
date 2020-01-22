@@ -4,8 +4,8 @@
  * DB関連
  */
 class db {
-	public $db_URL = '';
-	public $db_name = '';
+	static $db_URL = '';
+	static $db_name = '';
 	// public $db_host;
 	// public $db_port;
 	// public $db_user;
