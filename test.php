@@ -3,8 +3,8 @@
 include_once './medicine/db.inc';
 
 $d = new db();
-$a = $d->getDBURL();
-print_r($a);
+// $a = $d->getDBURL();
+// print_r($a);
 
 // $dbUrl = parse_url(getenv('DATABASE_URL'));
 
