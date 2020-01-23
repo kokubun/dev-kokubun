@@ -10,7 +10,7 @@ $LINE_ID = getenv('LINE_ID_1');
 
 
 if (empty($LINE_ID)) {
-	$response_body = createResponseBody(ERROR_STATUS, '設定値不足です');
+	$response_body = createResponseBody(ERROR_STATUS, 'error #1');
 	response($response_body);
 	exit();
 }
@@ -20,52 +20,50 @@ $ta = filter_input(INPUT_POST, 'ta');
 $u = filter_input(INPUT_POST, 'u');
 
 if (!isset($tp) || !isset($ta) || !isset($u)) {
-	$response_body = createResponseBody(ERROR_STATUS, 'パラメータ不足です');
+	$response_body = createResponseBody(ERROR_STATUS, 'error #2');
 	response($response_body);
 	exit();
 }
 
 $u_list = explode(',', $u);
 if (array_search($LINE_ID, $u_list) === false) {
-	echo 'not found';
-} else {
-	echo $LINE_ID;
+	$response_body = createResponseBody(ERROR_STATUS, 'error #3');
+	response($response_body);
+	exit();
 }
-exit();
 
-// print_r($u_list);
-// $line = new Line($tp, $ta, $u_list);
-// $line->multicastMessage('[test]薬飲みました。');
+$line = new Line($tp, $ta, $u_list);
+$line->multicastMessage('[test]薬飲みました。');
 
-// $response_body = createResponseBody(SUCCESS_STATUS, 'OK');
-// response($response_body);
+$response_body = createResponseBody(SUCCESS_STATUS, 'OK');
+response($response_body);
 
 // TODO: DB にインサート
-$db = new db();
+// $db = new db();
 
-try {
-	// DB接続
-	$db_name = $db->getDBName();
-	$db_host = $db->getDBHost();
-	$db_port = $db->getDBPort();
-	$db_user = $db->getDBUser();
-	$db_pass = $db->getDBPass();
-	$db_connect = new PDO("pgsql:host=$db_host;port=$db_port;dbname=$db_name;user=$db_user;password=$db_pass");
-	print("success");
+// try {
+// 	// DB接続
+// 	$db_name = $db->getDBName();
+// 	$db_host = $db->getDBHost();
+// 	$db_port = $db->getDBPort();
+// 	$db_user = $db->getDBUser();
+// 	$db_pass = $db->getDBPass();
+// 	$db_connect = new PDO("pgsql:host=$db_host;port=$db_port;dbname=$db_name;user=$db_user;password=$db_pass");
+// 	print("success");
 
-	// insert
-	// 静的プレースホルダを指定
-	$db_connect->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+// 	// insert
+// 	// 静的プレースホルダを指定
+// 	$db_connect->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
-	// DBエラー発生時は例外を投げる設定
-	$db_connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+// 	// DBエラー発生時は例外を投げる設定
+// 	$db_connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-	// SQL文 :id,:name,:romajiは、名前付きプレースホルダ
-	$sql = "insert into syain(id,name,romaji) VALUES(:id,:name,:romaji)";
+// 	// SQL文 :id,:name,:romajiは、名前付きプレースホルダ
+// 	$sql = "insert into syain(id,name,romaji) VALUES(:id,:name,:romaji)";
 
-} catch(PDOException $e) {
-	print("error!");
-}
+// } catch(PDOException $e) {
+// 	print("error!");
+// }
 
 exit();
 
