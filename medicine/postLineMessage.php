@@ -6,6 +6,7 @@ include_once './db.inc';
 
 const ERROR_STATUS = 900;
 const SUCCESS_STATUS = 200;
+const LINE_ID = getenv('LINE_ID_1');
 
 $tp = filter_input(INPUT_POST, 'tp');
 $ta = filter_input(INPUT_POST, 'ta');
@@ -17,8 +18,13 @@ if (!isset($tp) || !isset($ta) || !isset($u)) {
 	exit();
 }
 
-// kokubun.DEBUG: testのため
-// $u_list = explode(',', $u);
+$u_list = explode(',', $u);
+if (array_search(LINE_ID, $u_list)) {
+	echo LINE_ID;
+} else {
+	echo 'not found';
+}
+
 // print_r($u_list);
 // $line = new Line($tp, $ta, $u_list);
 // $line->multicastMessage('[test]薬飲みました。');
@@ -38,6 +44,17 @@ try {
 	$db_pass = $db->getDBPass();
 	$db_connect = new PDO("pgsql:host=$db_host;port=$db_port;dbname=$db_name;user=$db_user;password=$db_pass");
 	print("success");
+
+	// insert
+	// 静的プレースホルダを指定
+	$db_connect->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+
+	// DBエラー発生時は例外を投げる設定
+	$db_connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+	// SQL文 :id,:name,:romajiは、名前付きプレースホルダ
+	$sql = "insert into syain(id,name,romaji) VALUES(:id,:name,:romaji)";
+
 } catch(PDOException $e) {
 	print("error!");
 }
