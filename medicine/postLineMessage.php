@@ -26,8 +26,8 @@ if (!isset($tp) || !isset($ta) || !isset($u)) {
 }
 
 $u_list = explode(',', $u);
-if (array_search(LINE_ID, $u_list)) {
-	echo LINE_ID;
+if (array_search($LINE_ID, $u_list)) {
+	echo $LINE_ID;
 } else {
 	echo 'not found';
 }
