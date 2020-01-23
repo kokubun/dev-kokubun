@@ -17,15 +17,30 @@ if (!isset($tp) || !isset($ta) || !isset($u)) {
 	exit();
 }
 
-$u_list = explode(',', $u);
-print_r($u_list);
-$line = new Line($tp, $ta, $u_list);
-$line->multicastMessage('[test]薬飲みました。');
+// kokubun.DEBUG: testのため
+// $u_list = explode(',', $u);
+// print_r($u_list);
+// $line = new Line($tp, $ta, $u_list);
+// $line->multicastMessage('[test]薬飲みました。');
 
-$response_body = createResponseBody(SUCCESS_STATUS, 'OK');
-response($response_body);
+// $response_body = createResponseBody(SUCCESS_STATUS, 'OK');
+// response($response_body);
 
 // TODO: DB にインサート
+$db = new db();
+
+try {
+	// DB接続
+	$db_name = $db->getDBName();
+	$db_host = $db->getDBHost();
+	$db_port = $db->getDBPort();
+	$db_user = $db->getDBUser();
+	$db_pass = $db->getDBPass();
+	$db_connect = new PDO("pgsql:host=$db_host;port=$db_port;dbname=$db_name;user=$db_user;password=$db_pass");
+	print("success");
+} catch(PDOException $e) {
+	print("error!");
+}
 
 exit();
 
