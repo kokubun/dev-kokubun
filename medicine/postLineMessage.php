@@ -8,11 +8,15 @@ const ERROR_STATUS = 900;
 const SUCCESS_STATUS = 200;
 const LINE_ID = getenv('LINE_ID_1');
 
-if (empty(LINE_ID)) {
-	$response_body = createResponseBody(ERROR_STATUS, '設定値不足です');
-	response($response_body);
-	exit();
-}
+
+// if (empty(LINE_ID)) {
+// 	$response_body = createResponseBody(ERROR_STATUS, '設定値不足です');
+// 	response($response_body);
+// 	exit();
+// }
+response(LINE_ID);
+exit();
+
 $tp = filter_input(INPUT_POST, 'tp');
 $ta = filter_input(INPUT_POST, 'ta');
 $u = filter_input(INPUT_POST, 'u');
