@@ -6,7 +6,7 @@ include_once './db.inc';
 
 const ERROR_STATUS = 900;
 const SUCCESS_STATUS = 200;
-const LINE_ID = getenv('LINE_ID_1');
+$LINE_ID = getenv('LINE_ID_1');
 
 
 // if (empty(LINE_ID)) {
