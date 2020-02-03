@@ -59,7 +59,7 @@ response($response_body);
 // 	$db_connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 // 	// SQL文 :id,:name,:romajiは、名前付きプレースホルダ
-// 	$sql = "insert into syain(id,name,romaji) VALUES(:id,:name,:romaji)";
+// 	// $sql = "insert into syain(id,name,romaji) VALUES(:id,:name,:romaji)";
 
 // } catch(PDOException $e) {
 // 	print("error!");
