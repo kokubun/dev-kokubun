@@ -33,12 +33,12 @@ if (array_search($LINE_ID, $u_list) === false) {
 }
 
 $line = new Line($tp, $ta, $u_list);
-$line->multicastMessage('[test]薬飲みました。');
+$line->multicastMessage('薬飲みました。');
 
 $response_body = createResponseBody(SUCCESS_STATUS, 'OK');
 response($response_body);
 
-// TODO: DB にインサート
+// DB にインサート
 $db = new db();
 
 try {
@@ -52,7 +52,7 @@ try {
 	print("success");
 
 	// insert
-	$db_connect->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+	// $db_connect->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 	$db_connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	$sql = "insert into medicine(create_at) VALUES(current_timestamp)";
 	$db_connect->query($sql);
