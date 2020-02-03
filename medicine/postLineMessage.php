@@ -49,7 +49,8 @@ try {
 	$db_user = $db->getDBUser();
 	$db_pass = $db->getDBPass();
 	$db_connect = new PDO("pgsql:host=$db_host;port=$db_port;dbname=$db_name;user=$db_user;password=$db_pass");
-	print("success");
+
+	$db_connect->beginTransaction();
 
 	// insert
 	// $db_connect->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
@@ -57,6 +58,7 @@ try {
 	$sql = "insert into medicine(create_at) VALUES(current_timestamp)";
 	$db_connect->query($sql);
 	$db_connect->commit();
+
 } catch(PDOException $e) {
 	print($e->getMessage());
 }
