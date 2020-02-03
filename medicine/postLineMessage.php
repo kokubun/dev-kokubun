@@ -58,7 +58,7 @@ try {
 	$db_connect->query($sql);
 	$db_connect->commit();
 } catch(PDOException $e) {
-	print("error!");
+	print($e->getMessage());
 }
 
 exit();
