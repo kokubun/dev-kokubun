@@ -5,11 +5,12 @@
 include_once './db.inc';
 
 $LINE_ID = getenv('LINE_ID_1');
-$now_ymdh = date('YmdH');
+$now_microtime = time();
+$now_datetime = date('YmdHis', strtotime($now_microtime));
 
 
 echo "check!!!\n";
-echo "{$now_ymdh}\n";
+echo "{$now_datetime}\n";
 
 
 exit();
