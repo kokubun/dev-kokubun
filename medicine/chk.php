@@ -17,18 +17,21 @@ $now_day = date('d', $now_microtime);
 $now_hour = date('H', $now_microtime);
 
 echo "check!!!<br>";
-echo "{$now_datetime}<br>";
-echo "{$now_hour}<br>";
-
 
 // TODO: 毎月1日にデータ削除
 
 // 
 $time_status = chkTimeStatus($now_hour);
+echo "{$time_status}<br>";
+
+
 if ($time_status === NOTHING_STATUS) {
 	exit();
 }
 
+$db_connect = new db();
+$sql = "select * from medicine";
+$a = $db_connect->query($sql);
 
 
 exit();
