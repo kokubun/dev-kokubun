@@ -32,7 +32,7 @@ if ($time_status === NOTHING_STATUS) {
 $db_connect = new db();
 $sql = "select * from medicine";
 $a = $db_connect->query($sql);
-
+print_r($a);
 
 exit();
 
