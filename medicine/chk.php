@@ -25,14 +25,16 @@ $time_status = chkTimeStatus($now_hour);
 echo "{$time_status}<br>";
 
 
-if ($time_status === NOTHING_STATUS) {
-	exit();
-}
+// if ($time_status === NOTHING_STATUS) {
+// 	exit();
+// }
 
 $db_connect = new db();
 $sql = "select * from medicine";
 $a = $db_connect->query($sql);
-print_r($a);
+foreach ($a as $row) {
+    print_r($row);
+}
 
 exit();
 

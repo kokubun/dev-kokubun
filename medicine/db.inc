@@ -38,15 +38,15 @@ class db {
 	}
 
 	public function query($sql) {
-		$this->db_connect->query($sql);
+		return $this->db_connect->query($sql);
 	}
 
 	public function commit() {
-		$this->db_connect->commit();
+		return $this->db_connect->commit();
 	}
 
 	public function rollback() {
-		$this->db_connect->rollback();
+		return $this->db_connect->rollback();
 	}
 
 	public function getDBName() {
