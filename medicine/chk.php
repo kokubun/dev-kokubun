@@ -19,7 +19,14 @@ $now_hour = date('H', $now_microtime);
 
 echo "check!!!<br>";
 
+$db_connect = new db();
+
 // TODO: 毎月1日にデータ削除
+if ($now_day === '1' || $now_day === '15') {
+	$sql = "DELETE FROM medicine WHERE create_at <= current_timestamp + '-3 day'";
+	$db_connect->query($sql);
+	$db_connect->commit();
+}
 
 // 
 $time_status = chkTimeStatus($now_hour);
@@ -33,8 +40,7 @@ if ($time_status === NOTHING_STATUS) {
 $result = false;
 
 // 24時間以内の登録データを取得
-$db_connect = new db();
-$sql = "select create_at from medicine where create_at >= current_timestamp + '-1 day'";
+$sql = "SELECT create_at FROM medicine WHERE create_at >= current_timestamp + '-1 day'";
 $db_data = $db_connect->query($sql);
 foreach ($db_data as $row) {
 	print_r($row['create_at']);
@@ -55,6 +61,9 @@ foreach ($db_data as $row) {
 
 exit();
 
+/**
+ * 
+ */
 function chkTimeStatus($hour) {
 	$res = NOTHING_STATUS;
 	switch ($hour) {
