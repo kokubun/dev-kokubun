@@ -3,6 +3,7 @@
 // 夜-> PM 23:00 以降、登録がなかったらアラート
 
 include_once './db.inc';
+include_once './Line.inc';
 
 date_default_timezone_set("Asia/Tokyo");
 
@@ -25,19 +26,34 @@ $time_status = chkTimeStatus($now_hour);
 echo "{$time_status}<br>";
 
 
-// if ($time_status === NOTHING_STATUS) {
-// 	exit();
-// }
-
-$db_connect = new db();
-$sql = "select * from medicine";
-$a = $db_connect->query($sql);
-foreach ($a as $row) {
-    print_r($row);
+if ($time_status === NOTHING_STATUS) {
+	exit();
 }
 
-exit();
+$result = false;
 
+// 24時間以内の登録データを取得
+$db_connect = new db();
+$sql = "select create_at from medicine where create_at >= current_timestamp + '-1 day'";
+$db_data = $db_connect->query($sql);
+foreach ($db_data as $row) {
+	print_r($row['create_at']);
+	switch ($time_status) {
+		case MORNING_STATUS:
+			# code
+			break;
+		case NOTHING_STATUS:
+			# code...
+			break;
+		default:
+			# code...
+			break;
+	}
+}
+
+
+
+exit();
 
 function chkTimeStatus($hour) {
 	$res = NOTHING_STATUS;
