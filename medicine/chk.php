@@ -3,6 +3,7 @@
 // 夜-> PM 23:00 以降、登録がなかったらアラート
 
 include_once './db.inc';
+include_once './Line.inc';
 
 date_default_timezone_set("Asia/Tokyo");
 
@@ -18,27 +19,51 @@ $now_hour = date('H', $now_microtime);
 
 echo "check!!!<br>";
 
+$db_connect = new db();
+
 // TODO: 毎月1日にデータ削除
+if ($now_day === '1' || $now_day === '15') {
+	$sql = "DELETE FROM medicine WHERE create_at <= current_timestamp + '-3 day'";
+	$db_connect->query($sql);
+	$db_connect->commit();
+}
 
 // 
 $time_status = chkTimeStatus($now_hour);
 echo "{$time_status}<br>";
 
 
-// if ($time_status === NOTHING_STATUS) {
-// 	exit();
-// }
-
-$db_connect = new db();
-$sql = "select * from medicine";
-$a = $db_connect->query($sql);
-foreach ($a as $row) {
-    print_r($row);
+if ($time_status === NOTHING_STATUS) {
+	exit();
 }
+
+$result = false;
+
+// 24時間以内の登録データを取得
+$sql = "SELECT create_at FROM medicine WHERE create_at >= current_timestamp + '-1 day'";
+$db_data = $db_connect->query($sql);
+foreach ($db_data as $row) {
+	print_r($row['create_at']);
+	switch ($time_status) {
+		case MORNING_STATUS:
+			# code
+			break;
+		case NOTHING_STATUS:
+			# code...
+			break;
+		default:
+			# code...
+			break;
+	}
+}
+
+
 
 exit();
 
-
+/**
+ * 
+ */
 function chkTimeStatus($hour) {
 	$res = NOTHING_STATUS;
 	switch ($hour) {
