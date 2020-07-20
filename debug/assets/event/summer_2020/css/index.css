@@ -132,7 +132,7 @@
  お店情報エリア
 ----------------*/
 .event_shop-container {
-    top: 63px;
+    top: 50px;
     margin-bottom: 100px;
     position: relative;
 }
@@ -444,7 +444,6 @@ dl.event_shop-even dt {
   .event_sp { display:block; }
   .event_pc_img { display: none; }
   .event_sp_img { display: block; }
-
 }
 
 
@@ -475,6 +474,9 @@ dl.event_shop-even dt {
     }
     .event_appeal-container {
         height: 24vh;
+    }
+    .event_appeal-container dl {
+        width: 100%;
     }
     .event_shop-wrapper dl dd {
         padding: 3vw;
