@@ -579,8 +579,7 @@ dl.event_shop-even dt {
 }
 @media screen and (max-width: 580px) {
     .event_main_visual_body h1 img.event_sp_img {
-        top: 23vw;
-        left: 10vw;
+        left: 3vw;
     }
     .event_h2 h2 img {
         top: 8.6vh;
